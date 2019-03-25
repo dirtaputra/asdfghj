@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2019 at 07:51 PM
+-- Generation Time: Mar 25, 2019 at 10:13 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -65,15 +65,15 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`br_id`, `br_nm`, `br_item`, `br_hrg`, `br_stok`, `br_satuan`, `br_gbr`, `ket`, `br_sts`) VALUES
-(1, 'Kaos Sudirman', 1, 60000, 12, 'Pcs', 'gambar/8.jpg', 'Bahan cvc bandung build up tanpa jahitan samping', 'Y'),
-(2, 'Kaos Skaters', 1, 65000, 24, 'Pcs', 'gambar/9.jpg', 'Bahan Cotton Combed 24s built up', 'Y'),
-(3, 'Kaos Emwe', 1, 80000, 30, 'Pcs', 'gambar/6.jpg', 'Bahan cvc bandung build up tanpa jahitan samping', 'Y'),
-(4, 'Kaos Begin', 1, 80000, 20, 'Pcs', 'gambar/7.jpg', 'Bahan cvc bandung build up tanpa jahitan samping', 'Y'),
-(5, 'Kaos Man City', 1, 60000, 30, 'Pcs', 'gambar/2.jpg', 'Bahan Cotton Combed 20s Jahitan samping', 'Y'),
-(6, 'Kaos H & L', 1, 75000, 20, 'Pcs', 'gambar/5.jpg', 'Bahan Cotton Combed 24s built up', 'Y'),
-(7, 'Kaos Cool Blue', 1, 70000, 20, 'Pcs', 'gambar/4.jpg', 'Bahan kardet jakarta', 'Y'),
-(8, 'Kaos Feed Me', 1, 65000, 12, 'Pcs', 'gambar/3.jpg', 'Bahan Cotton Combed 24s built up', 'Y'),
-(9, 'Kaos Art Hitam', 1, 55000, 20, 'Pcs', 'gambar/1.jpg', 'Bahan cvc bandung build up tanpa jahitan samping', 'Y');
+(1, 'Kartu Uno', 1, 43000, 12, 'Pcs', 'gambar/8.jpeg', 'Permainan Kartu', 'Y'),
+(2, 'Lego', 1, 65000, 24, 'Pcs', 'gambar/9.jpeg', 'Permainan Menyusun', 'Y'),
+(3, 'YOYO', 1, 80000, 30, 'Pcs', 'gambar/6.jpeg', 'Permainan Tradisional', 'Y'),
+(4, 'Bebek Karet', 1, 80000, 20, 'Pcs', 'gambar/7.jpeg', 'Bebek Karet', 'Y'),
+(5, 'Boneka', 1, 60000, 30, 'Pcs', 'gambar/2.jpeg', 'Mainan Berbulu', 'Y'),
+(6, 'Gasing', 1, 75000, 20, 'Pcs', 'gambar/5.jpeg', 'Permainan Tradisional', 'Y'),
+(7, 'Hot Wheel', 1, 70000, 20, 'Pcs', 'gambar/4.jpeg', 'Permainan Mobil', 'Y'),
+(8, 'Bola Plastik', 1, 65000, 12, 'Pcs', 'gambar/3.jpeg', 'Permainan plastik', 'Y'),
+(9, 'Congklak', 1, 43000, 20, 'Pcs', 'gambar/1.jpeg', 'Permainan Tradisional', 'Y');
 
 -- --------------------------------------------------------
 
