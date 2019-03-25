@@ -196,27 +196,6 @@
 				<!-- end: Footer Menu Logo -->
 
 				<!-- start: Footer Menu Links-->
-				<div class="span9">
-					
-					<div id="footer-menu-links">
-
-						<ul id="footer-nav">
-
-							<li><a href="#">Kemeja</a></li>
-
-							<li><a href="#">Kaos</a></li>
-
-							<li><a href="#">Sweater</a></li>
-
-							<li><a href="#">Jacket</a></li>
-							
-							<li><a href="#">Pants & Jeans</a></li>
-
-						</ul>
-
-					</div>
-					
-				</div>
 				<!-- end: Footer Menu Links-->
 
 				<!-- start: Footer Menu Back To Top -->

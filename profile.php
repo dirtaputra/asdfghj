@@ -52,6 +52,11 @@
     height: 260px;
     overflow: scroll;
 }
+.gambar {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
     </style>
 	<!-- end: CSS -->
 
@@ -136,6 +141,14 @@
             <form id="formku" method="post" action="proses.php" onsubmit="return formCheck(this);">
 <table style="font-style: oblique; font-weight: bold; margin-left: 140px;">
 <tr>
+	<td>
+		<div>
+		<img src="gambar/profile/profile.jpeg" alt="">
+		</div>
+		
+	</td>
+</tr>
+<tr>
 <td width="150">Nama</td>
 <td width="30">:</td>
 <td width="550"><span>giacinta arianne belen ananta</span></td>
@@ -208,27 +221,7 @@
 				<!-- end: Footer Menu Logo -->
 
 				<!-- start: Footer Menu Links-->
-				<div class="span9">
-					
-					<div id="footer-menu-links">
-
-						<ul id="footer-nav">
-
-							<li><a href="#">Kemeja</a></li>
-
-							<li><a href="#">Kaos</a></li>
-
-							<li><a href="#">Sweater</a></li>
-
-							<li><a href="#">Jacket</a></li>
-							
-							<li><a href="#">Pants & Jeans</a></li>
-
-						</ul>
-
-					</div>
-					
-				</div>
+				
 				<!-- end: Footer Menu Links-->
 
 				<!-- start: Footer Menu Back To Top -->

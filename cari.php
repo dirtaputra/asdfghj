@@ -1,4 +1,7 @@
-<?php require_once("cart.php"); ?>
+<?php require_once("koneksi.php");
+    if (!isset($_SESSION)) {
+        session_start();
+    } ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +36,13 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+	<style>
+		.gambar {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
 </head>
 <body>
     
@@ -40,14 +50,10 @@
 	<header>
 		
 		<!--start: Container -->
-	<div class="container">
+		<div class="container">
 			
 			<!--start: Row -->
 			<div class="row">
-					
-				<!--start: Logo -->
-				
-				<!--end: Logo -->
 					
 				<!--start: Navigation -->
 				<div class="span9">
@@ -61,11 +67,11 @@
 			          		</a>
 			          		<div class="nav-collapse collapse">
 			            		<ul class="nav">
-			              			<li class="active"><a href="index.php">Home</a></li>
-			              			<li><a href="produk.php">Produk Kami</a></li>
+			              			<li><a href="index.php">Home</a></li>
+			              			<li class="active"><a href="produk.php">Produk Kami</a></li>
 									<li><a href="profile.php">Profile</a></li>
-                                    <li><a href="detail.php">Keranjang</a></li>
-																		<li><a href="logout.php">Logout</a></li>
+									<li><a href="detail.php">Keranjang</a></li>
+									<li><a href="logout.php">Logout</a></li>
 			            		</ul>
 			          		</div>
 			        	</div>
@@ -91,7 +97,7 @@
 			<!-- start: Container -->
 			<div class="container">
 
-				<h2><i class="ico-usd ico-white"></i>Checkout Keranjang</h2>
+				<h2><i class="ico-stats ico-white"></i>Produk Kami</h2>
 
 			</div>
 			<!-- end: Container  -->
@@ -104,85 +110,85 @@
 	<!--start: Wrapper-->
 	<div id="wrapper">
 				
-		<!-- start: Container -->
-		<div class="container">
+		<!--start: Container -->
+    	<div class="container"> 
+        <!--<div class="title"><h3>Keranjang Anda</h3></div>
+            <div class="hero-unit">
+            </div> -->            
+      		<!-- start: Row -->
+      		<div class="row">
+	<?php
+    $cari = $_GET['cari'];
+    $sql = mysqli_query($koneksi, "SELECT * FROM barang where br_nm LIKE '%$cari%'");
+	if(mysqli_num_rows($sql) == 0){
+		echo "Tidak ada produk!";
+	}else{
+		while($data = mysqli_fetch_assoc($sql)){
+                    ?>
+        		<div class="span4">
+          			<div class="icons-box">
+                        <div class="title"><h3><?php echo $data['br_nm']; ?></h3></div>
+						<div class="gambar" style="width: 100px; height: 100px; alingment = center">
+							<img src="<?php echo $data['br_gbr']; ?>" />
+						</div>
+						<div><h3>Rp.<?php echo number_format($data['br_hrg'],2,",",".");?></h3></div>
+					<!--	<p>
+						
+						</p> -->
+						<div class="clear"><a href="detailproduk.php?hal=detailbarang&kd=<?php echo $data['br_id'];?>" class="btn btn-lg btn-danger">Detail</a> <a href="detailproduk.php?hal=detailbarang&kd=<?php echo $data['br_id'];?>" class="btn btn-lg btn-success">Beli &raquo;</a></div>
 
-			<!-- start: Table -->
-                 <div class="table-responsive">
-                 <div class="title"><h3>Form Checkout</h3></div>
-                 <div class="hero-unit">Harap isi form dibawah ini dengan lengkap dan benar sesuai idenditas anda!</div>
-                <div class="hero-unit">Total Belanja Anda Rp. <?php echo abs((int)$_GET['total']); ?>,-</div> 
-    <form id="formku" action="selesai.php" method="post">
-    <table class="table table-condensed">
-    <input type="hidden" name="total" value="<?php echo abs((int)$_GET['total']); ?>">
-    <tr>
-        <td><label for="nm_usr">Nama</label></td>
-        <td><input name="nm_usr" type="text" class="required" minlength="6" id="nm_usr" size="200" /></td>
-      </tr>
-      <tr>
-        <td><label for="log_usr">Username</label></td>
-        <td><input name="log_usr" type="text" class="required" minlength="6" id="log_usr" /></td>
-      </tr>
-      <tr>
-        <td><label for="pas_usr">Password</label></td>
-        <td><input name="pas_usr" type="password" class="required" minlength="6" id="pas_usr" /></td>
-      </tr>
-      <tr>
-        <td><label for="email_usr">Email</label></td>
-        <td><input name="email_usr" type="text" class="email required" id="email_usr" /></td>
-      </tr>
-      <tr>
-        <td><label for="almt_usr">Alamat</label></td>
-        <td><input name="almt_usr" type="text" class="required" id="almt_usr" /></td>
-      </tr>
-      <tr>
-        <td><label for="kp_usr">Kode Pos</label></td>
-        <td><input name="kp_usr" type="text" class="required number" minlength="5" maxlength="5" id="kp_usr" /></td>
-      </tr>
-      <tr>
-        <td><label for="kota_usr">Kota</label></td>
-        <td><input name="kota_usr" type="text" class="required" minlength="6" id="kota_usr" /></td>
-      </tr>
-      <tr>
-        <td><label for="tlp">No telepon</label></td>
-        <td><input name="tlp" type="text" class="required number" minlength="12" id="tlp" /></td>
-      </tr>
-      <tr>
-        <td><label for="rek">No Rekening</label></td>
-        <td><input name="rek" type="text" class="required number" minlength="12" id="rek" /></td>
-      </tr>
-      <tr>
-        <td><label for="nmrek">Nama Rekening</label></td>
-        <td><input name="nmrek" type="text" class="required" minlength="6" id="nmrek" /></td>
-      </tr>
-      <tr>
-        <td><label for="bank">Bank</label></td>
-        <td><select name="bank" class="required">
-        <option></option>
-        <option value="Mandiri">Mandiri</option>
-        <option value="BNI">BNI</option>
-        <option value="CIMB">CIMB</option>
-        <option value="BCA">BCA</option>
-        <option value="Bank Jabar">Bank Jabar</option>
-        <option value="Danamon">Danamon</option>
-        <option value="BRI">BRI</option>
-        <option value="Permata">Permata</option>
-        </select>
-        </td>
-      </tr>
-      <tr>
-      <td></td>
-        <td><input type="submit" value="Simpan Data" name="finish"  class="btn btn-sm btn-primary"/>&nbsp;<a href="index.php" class="btn btn-sm btn-primary">Kembali</a></td>
-        </tr>
-    </table>
-    </form>
-                   </div>
+                    </div>
+        		</div>
+                <?php   
+              }
+              }
+              
+              ?>
+<!---->
+      		</div>
+			<!-- end: Row -->
+					
+					
+				</div>	
 				
-			<!-- end: Table -->
-
+					
+				</div>
+				
+			</div>
+			<!--end: Row-->
+	
 		</div>
-		<!-- end: Container -->
+		<!--end: Container-->
 				
+		<!--start: Container -->
+    	<div class="container">	
+      		
+			<hr>
+		
+			<!-- start Clients List -->	
+			<!-- <div class="clients-carousel">
+		
+				<ul class="slides clients">
+					<li><img src="img/logos/1.png" alt=""/></li>
+					<li><img src="img/logos/2.png" alt=""/></li>	
+					<li><img src="img/logos/3.png" alt=""/></li>
+					<li><img src="img/logos/4.png" alt=""/></li>
+					<li><img src="img/logos/5.png" alt=""/></li>
+					<li><img src="img/logos/6.png" alt=""/></li>
+					<li><img src="img/logos/7.png" alt=""/></li>
+					<li><img src="img/logos/8.png" alt=""/></li>
+					<li><img src="img/logos/9.png" alt=""/></li>
+					<li><img src="img/logos/10.png" alt=""/></li>		
+				</ul>
+		
+			</div> -->
+			<!-- end Clients List -->
+		
+			<hr>
+		
+		</div>
+		<!--end: Container-->	
+
 	</div>
 	<!-- end: Wrapper  -->			
 
@@ -204,6 +210,7 @@
 				<!-- end: Footer Menu Logo -->
 
 				<!-- start: Footer Menu Links-->
+				
 				<!-- end: Footer Menu Links-->
 
 				<!-- start: Footer Menu Back To Top -->
@@ -242,7 +249,19 @@
 	<!-- end: Footer -->
 
 	<!-- start: Copyright -->
-
+	<div id="copyright">
+	
+		<!-- start: Container -->
+		<!-- <div class="container">
+		
+			<p>
+				Copyright &copy; <a href="http://www.niqoweb.com">DistroIT 2015</a> <a href="http://bootstrapmaster.com" alt="Bootstrap Themes">Bootstrap Themes</a> designed by BootstrapMaster
+			</p>
+	
+		</div> -->
+		<!-- end: Container  -->
+		
+	</div>	
 	<!-- end: Copyright -->
 
 <!-- start: Java Script -->
@@ -254,21 +273,7 @@
 <script src="js/jquery.cslider.js"></script>
 <script src="js/slider.js"></script>
 <script def src="js/custom.js"></script>
-
-<script src="jquery.validate.js"></script>
-    <script>
-    $(document).ready(function(){
-        $("#formku").validate();
-    });
-    </script> 
-    
-    <style type="text/css">
-    label.error {
-        color: red;
-        padding-left: .5em;
-    }
-    </style>
 <!-- end: Java Script -->
 
 </body>
-</html>
+</html>	

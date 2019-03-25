@@ -36,6 +36,13 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+	<style>
+		.gambar {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
 </head>
 <body>
     
@@ -109,7 +116,9 @@
             <div class="hero-unit">
             </div> -->            
       		<!-- start: Row -->
-            
+            <form action="cari.php">
+				<input type="text" name="cari" placeholder="cari">
+			</form>
       		<div class="row">
 	<?php
                     $sql = mysqli_query($koneksi, "SELECT * FROM barang ORDER BY br_id DESC");
@@ -121,7 +130,9 @@
         		<div class="span4">
           			<div class="icons-box">
                         <div class="title"><h3><?php echo $data['br_nm']; ?></h3></div>
-                        <img src="<?php echo $data['br_gbr']; ?>" />
+						<div class="gambar" style="width: 100px; height: 100px; alingment = center">
+							<img src="<?php echo $data['br_gbr']; ?>" />
+						</div>
 						<div><h3>Rp.<?php echo number_format($data['br_hrg'],2,",",".");?></h3></div>
 					<!--	<p>
 						
@@ -201,27 +212,7 @@
 				<!-- end: Footer Menu Logo -->
 
 				<!-- start: Footer Menu Links-->
-				<div class="span9">
-					
-					<div id="footer-menu-links">
-
-						<ul id="footer-nav">
-
-							<li><a href="#">Kemeja</a></li>
-
-							<li><a href="#">Kaos</a></li>
-
-							<li><a href="#">Sweater</a></li>
-
-							<li><a href="#">Jacket</a></li>
-							
-							<li><a href="#">Pants & Jeans</a></li>
-
-						</ul>
-
-					</div>
-					
-				</div>
+				
 				<!-- end: Footer Menu Links-->
 
 				<!-- start: Footer Menu Back To Top -->
